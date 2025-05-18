@@ -1,27 +1,42 @@
-# Notification Service
+# 📬 Notification Service with RabbitMQ
 
-## Description
-A simple notification service built with Node.js, Express, and SQLite. Supports sending and retrieving notifications.
+A simple Notification Microservice built using **Node.js**, **Express**, **SQLite**, and **RabbitMQ**.  
+Supports queuing and processing notifications via a background worker.
 
-## Setup Instructions
-1. Clone the repo:
-   ```bash
-   git clone <your-repo-link>
-   cd notification-service
-   ```
-2. Install dependencies:
-   ```bash
-   npm install express sqlite3
-   ```
-3. Run the server:
-   ```bash
-   node server.js
-   ```
+---
 
-## API Endpoints
-- **POST /notifications**: Send a notification.
-  - Body: `{ userId: string, type: 'email' | 'sms' | 'in-app', message: string }`
-- **GET /users/:id/notifications**: Get all notifications for a user.
+## 🔧 Features
 
-## Notes
-This is an in-memory database setup. Data will be lost on server restart.
+- Send notifications (Email / SMS / In-App) via a REST API.
+- Process notifications asynchronously using RabbitMQ.
+- Store notifications in an in-memory SQLite database.
+- View all notifications per user.
+
+---
+
+## 📦 Tech Stack
+
+- **Backend:** Node.js, Express.js
+- **Queue:** RabbitMQ (via amqplib)
+- **Database:** SQLite (in-memory)
+- **Architecture:** Producer-Consumer pattern
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Prerequisites
+
+- Node.js and npm
+- RabbitMQ server running locally (`amqp://localhost`)
+  - You can use Docker:
+    ```bash
+    docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
+    ```
+
+---
+
+### 2️⃣ Install Dependencies
+
+```bash
+npm install express sqlite3 amqplib
